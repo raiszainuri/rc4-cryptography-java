@@ -1,17 +1,15 @@
-package com.company;
-
 import java.util.Arrays;
 
 class Main {
     public static void main(String[] args) {
-        start("rais_zainuri_rzr","46262");
-        decrypt("pdn~R}nhk}wmUq}q","46262");
+        System.out.println(encrypt("rais_zainuri_rzr", "46262"));
+        System.out.println(decrypt("pdn~R}nhk}wmUq}q", "46262"));
     }
 
-    static void start(String plain, String key){
+    static void start(String plain, String key) {
         ksa(plain, key);
         System.out.println("\n");
-        prga(plain, key);
+        encrypt(plain, key);
     }
 
     static void ksa(String plain, String key) {
@@ -47,7 +45,7 @@ class Main {
         }
     }
 
-    static void prga(String plain, String key) {
+    static String encrypt(String plain, String key) {
         int temp;
         int i = 0, j = 0, t, K;
 
@@ -81,7 +79,9 @@ class Main {
             hasilcipher.append(Character.toString(Integer.parseInt(ciphertext[index], 2)));
         }
 
-        System.out.print("Plain \t:\t" + plain + "\n\t\t\t");
+        return hasilcipher.toString();
+
+        /*System.out.print("Plain \t:\t" + plain + "\n\t\t\t");
         for (int l = 0; l < plain.length(); l++) {
             System.out.print(plaintext[l] + " ");
         }
@@ -101,11 +101,10 @@ class Main {
         System.out.print("Cipher \t:\t" + hasilcipher + "\n\t\t\t");
         for (int l = 0; l < ciphertext.length; l++) {
             System.out.print(ciphertext[l] + " ");
-        }
+        }*/
     }
 
-    static void decrypt(String plain, String key) {
-        System.out.println("\n\nDECRYPT");
-        prga(plain, key);
+    static String decrypt(String plain, String key) {
+        return encrypt(plain, key);
     }
 }
